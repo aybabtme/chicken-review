@@ -25,7 +25,7 @@ func NewRouter(notFoundHandler http.Handler) *Router {
 	}
 }
 
-func (rtr *Router) AddRule(name string, method, pattern string, handler http.Handler) {
+func (rtr *Router) AddRule(name string, method, pattern string, handler http.HandlerFunc) {
 	newRule := &routeRule{
 		name:    name,
 		method:  method,

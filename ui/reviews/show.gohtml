@@ -1,0 +1,22 @@
+{{define "show_view"}}
+<article>
+    <header>
+        <h1>{{.Title}}</h1>
+        <h2>{{.StoreName}}</h2>
+        <p>posted on <time datetime={{.Date}}>{{.Date}}</time> by {{.Author}}</p>
+        <img src="{{.DefaultPictureURL}}"/>
+    </header>
+    <section>
+    <details>
+        <summary>Details</summary>
+        Phone Number
+    </details>
+    <footer>
+
+    </footer>
+<article>
+{{end}}
+
+{{define "content"}}
+{{template "show_view" .}}
+{{end}}

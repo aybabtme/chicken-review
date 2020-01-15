@@ -1,0 +1,9 @@
+{{define "body"}}
+<body>
+    {{block "content" .Content}}
+    {{/* This is shown if nothing overrides the "content" block. */}}
+    <h1>Oups...!</h1>
+    <p>There is no content to display. You shouldn't see this page!</p>
+    {{end}}
+</body>
+{{end}}

@@ -19,16 +19,19 @@ func main() {
 
 	myDB := db.NewInMemoryDatabase()
 
-	review1 := models.Review{
-		StoreName: "Nonhyeon Chicken",
-		Date:      "2019-12-20",
-		Title:     "Delicious And Crispy",
+	review1 := &models.Review{
+		StoreName:         "Nonhyeon Chicken",
+		Author: "Antoine",
+		Date:              "2019-12-20",
+		Title:             "Delicious And Crispy",
+		DefaultPictureURL: "https://assets-aybabt-me.sfo2.cdn.digitaloceanspaces.com/boat/lifepo_project/v0/lifepo4_upgrade_v0.png",
 		PictureURLs: []string{
 			"https://assets-aybabt-me.sfo2.cdn.digitaloceanspaces.com/boat/lifepo_project/v0/lifepo4_upgrade_v0.png",
 		},
 	}
-	review2 := models.Review{
+	review2 := &models.Review{
 		StoreName: "BBQ Chicken",
+		Author: "Antoine",
 		Date:      "2020-01-13",
 		Title:     "What A Disappointment!",
 	}
@@ -41,8 +44,10 @@ func main() {
 	reviewsCtrl := controllers.NewReviewController(myDB)
 
 	rtr := router.NewRouter(notFoundCtrl)
-	rtr.AddRule("reviews", "GET", "^/reviews(/[0-9]+)?$", reviewsCtrl)
-	rtr.AddRule("default", "GET", "^/$", defaultCtrl)
+	rtr.AddRule("reviews", "GET", "^/reviews/create$", reviewsCtrl.Create)
+	rtr.AddRule("reviews", "GET", "^/reviews/([0-9]+)$", reviewsCtrl.Get)
+	rtr.AddRule("reviews", "GET", "^/reviews/?$", reviewsCtrl.List)
+	rtr.AddRule("default", "GET", "^/$", defaultCtrl.ServeHTTP)
 
 	srv := http.Server{Handler: rtr}
 

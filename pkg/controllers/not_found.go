@@ -12,7 +12,7 @@ type NotFoundController struct {
 // HTTP GET index -> REDIRECT /reviews
 
 func (hdl *NotFoundController) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
-	view := views.NotFoundView{}
+	view := views.NewNotFoundView(views.DefaultBaseHTMLContext)
 	resp.Header().Set("Content-Type", view.ContentType())
 	err := view.Render(resp)
 	if err != nil {

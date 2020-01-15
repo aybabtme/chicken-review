@@ -1,0 +1,20 @@
+{{define "list_view_item"}}
+<a href="/reviews/{{.ID}}">{{.Title}}</a>
+{{end}}
+
+{{define "list_view"}}
+<ul>
+{{range .}}
+    <li>{{template "list_view_item" .}}</li>
+{{end}}
+</ul>
+{{end}}
+
+{{define "content"}}
+<div>
+    <a href="/reviews/create">Create a new review</a>
+</div>
+<div>
+    {{template "list_view" .}}
+</div>
+{{end}}

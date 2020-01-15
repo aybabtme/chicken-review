@@ -1,0 +1,22 @@
+{{define "head" -}}
+<head>
+    <meta charset="utf8">
+    <meta name="author" content="{{.Author}}">
+    <meta name="description" content="{{.Description}}">
+    {{if .OG}}}
+        {{if .Title}}<meta name="og:title"></meta>{{end}}
+        {{if .Type}}<meta name="og:type"></meta>{{end}}
+        {{if .ImageURL}}<meta name="og:image"></meta>{{end}}
+        {{if .CanonicalURL}}<meta name="og:url"></meta>{{end}}
+        {{if .SiteName}}<meta name="og:site_name"></meta>{{end}}
+        {{if .Description}}<meta name="og:description"></meta>{{end}}
+    {{end}}
+    {{if .Twitter}}}
+        {{if .Title}}<meta name="twitter:title"></meta>{{end}}
+        {{if .ImageURL}}<meta name="twitter:image"></meta>{{end}}
+        {{if .Description}}<meta name="twitter:description"></meta>{{end}}
+    {{end}}
+    <title>{{.Title}}</title>
+    <link rel="shortcut icon" href="{{.FavIcoURL}}" type="image/x-icon">
+</head>
+{{- end}}
